@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+
+<button class="btn btn-danger">check</button>
+<div class="bootstrap-wrapper">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 "  >
+
+                <div class="container">
+
+                    <img class="img-fluid text-center" style="width: 100px;" src="/assets/banner.jpg" alt="">
+                </div>
+<h1 class="text-center">Login here</h1>
+
+<form (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="full-width">
+        <mat-label>UserName</mat-label>
+        <input
+        [(ngModel)]="credentials.username"
+        name="username"
+         required type="text" matInput/>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input
+        [(ngModel)]="credentials.password"
+        name="username"
+         type="text" matInput/>
+      </mat-form-field>
+      <br>
+      <button mat-button color="primary" >Login</button>
+      <button mat-button color="accent">Reset</button>
+</form>
+
+<!--{{credentials | json}}-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
