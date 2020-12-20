@@ -18,7 +18,7 @@ const routes: Routes = [
  {path:'login',component:LoginComponent},
  {path:'product/addtocart/:product_id/:user_id',component:CartDetailsComponent,canActivate:[AuthGuard]},
  {path: 'category/:id/addtocart/:product_id/:user_id', component:CartDetailsComponent,canActivate:[AuthGuard]},
- {path: 'cart-details/:userId/', component:CartDetailsComponent,canActivate:[AuthGuard]},
+  {path: 'cart-details/:userId', component:CartDetailsComponent,canActivate:[AuthGuard]},
  {path:'' , component:HomeComponent},
 //  {path: '' , redirectTo:'/product' ,pathMatch:'full'},
 //  {path: '**' , redirectTo:'/product',pathMatch:'full'},

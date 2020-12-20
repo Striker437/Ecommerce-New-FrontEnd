@@ -21,6 +21,7 @@ export class CartDetailsComponent implements OnInit {
   productId: any;
   cartProducts: CartProduct[] = [];
   cartDetails:boolean;
+  deleteProduct: boolean;
 
 
   constructor(private loginService: LoginService, private dialog : MatDialog,
@@ -29,6 +30,8 @@ export class CartDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
+   
+
 
     this.route.params.forEach((urlParams) => {
       this.productId = urlParams['product_id'];
@@ -36,18 +39,25 @@ export class CartDetailsComponent implements OnInit {
 
      this.cartDetails=this.route.snapshot.paramMap.has('userId')
 
+
      if(this.cartDetails)
      {
-       const user_Id=this.route.snapshot.paramMap.get('userId')
+     const user_Id=this.route.snapshot.paramMap.get('userId')
      this.CartDetails(user_Id)
      }
+
       else
       this.addToCart(this.productId, this.userId);
+
+
+      this.updateCartStatus();
 
     });
 
 
   }
+  
+ 
 
    openPopUp() {
     let dialogRef = this.dialog.open(DialogComponent, {
@@ -63,20 +73,23 @@ export class CartDetailsComponent implements OnInit {
       data => {
         this.cartProducts = data;
         console.log("getting the cart products", this.cartProducts)
-        this.CalculateTotal(this.cartProducts)
+        this.cartService.CalculateTotal(this.cartProducts)
       }
     )
   }
 
 
-  CalculateTotal(cartProducts: CartProduct[]) {
+  // CalculateTotal(cartProducts: CartProduct[]) {
 
-    for (let i = 0; i < cartProducts.length; i++) {
-      this.TotalPrice = this.TotalPrice + cartProducts[i].price
-      this.TotalQuantity = this.TotalQuantity + cartProducts[i].quantity
-    }
-    console.log("total price", this.TotalPrice)
-  }
+  //   for (let i = 0; i < cartProducts.length; i++) {
+  //     this.TotalPrice = this.TotalPrice + cartProducts[i].price
+  //     this.TotalQuantity = this.TotalQuantity + cartProducts[i].quantity
+  //   }
+  //   //this.cartService.setTotalQuantity(this.TotalQuantity)
+  //   //this.cartService.setTotalPrice(this.TotalPrice)
+  //   console.log("total price", this.TotalPrice)
+  //   console.log("total quantity",this.TotalQuantity )
+  // }
 
 
 
@@ -88,10 +101,47 @@ export class CartDetailsComponent implements OnInit {
       data => {
         this.cartProducts = data;
         console.log("getting the cart products", this.cartProducts)
-        this.CalculateTotal(this.cartProducts)
+        this.cartService.CalculateTotal(this.cartProducts)
       }
     )
 
   }
+
+
+
+
+  remove(productId: string) {
+
+    console.log("getting cart produtct id" , productId )
+    
+    this.cartService.removeProduct(productId).subscribe(
+      data => {
+        this.cartProducts = data;
+        console.log("getting the cart products after removing one product", this.cartProducts)
+        this.cartService.CalculateTotal(this.cartProducts)
+      }
+    )
+}
+
+
+
+
+
+updateCartStatus() {
+   this.cartService.TotalPrice.subscribe(
+     data=>
+    {
+        this.TotalPrice=data
+   })
+
+
+
+   this.cartService.TotalQuantity.subscribe(
+    data=>
+   {
+       this.TotalQuantity=data
+  })
+
+}
 
 }
