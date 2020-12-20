@@ -31,7 +31,7 @@
 
                                 <!--decrement button-->
                                 <div class="col">
-                                    <button class="btn btn-primary btn-sm">
+                                    <button (click)="decrementQuantity(tempcartProduct)" class="btn btn-primary btn-sm">
                                         <i class="fas fa-minus"></i>
                                     </button>
 
@@ -44,7 +44,7 @@
 
                                 <!--increment button-->
                                 <div class="col">
-                                    <button  class="btn btn-primary btn-sm">
+                                    <button (click)="incrementQuantity(tempcartProduct)"  class="btn btn-primary btn-sm">
                                         <i class="fas fa-plus"></i>
                                     </button>
 

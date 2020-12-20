@@ -22,6 +22,7 @@ export class CartDetailsComponent implements OnInit {
   cartProducts: CartProduct[] = [];
   cartDetails:boolean;
   deleteProduct: boolean;
+  userdetails: any;
 
 
   constructor(private loginService: LoginService, private dialog : MatDialog,
@@ -32,10 +33,13 @@ export class CartDetailsComponent implements OnInit {
 
    
 
+     this.userdetails = JSON.parse(this.loginService.getUserdetail());      
+     this.userId=this.userdetails.id;
 
-    this.route.params.forEach((urlParams) => {
-      this.productId = urlParams['product_id'];
-      this.userId = urlParams['user_id'];
+
+     this.route.params.forEach((urlParams) => {
+       this.productId = urlParams['product_id'];
+     this.userId = urlParams['user_id'];
 
      this.cartDetails=this.route.snapshot.paramMap.has('userId')
 
@@ -141,6 +145,38 @@ updateCartStatus() {
    {
        this.TotalQuantity=data
   })
+
+}
+
+
+
+
+
+incrementQuantity(tempcartProduct)
+{
+ this.cartService.incrementQuantity(tempcartProduct.id,this.userId).subscribe(
+   
+  data=>{
+
+    this.cartProducts = data;
+    this.cartService.CalculateTotal(this.cartProducts)
+
+ })
+
+}
+
+
+decrementQuantity(tempcartProduct)
+{
+
+  this.cartService.decrementQuantity(tempcartProduct.id,this.userId).subscribe(
+    data=>
+    {
+      this.cartProducts = data;
+      this.cartService.CalculateTotal(this.cartProducts)
+
+  })
+
 
 }
 

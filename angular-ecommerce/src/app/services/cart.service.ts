@@ -10,6 +10,8 @@ export class CartService {
   
   
   
+  
+  
   TotalPrice: Subject<number>=new Subject<number>();   //event for subscribe
   TotalQuantity:Subject<number>=new Subject<number>();   //event for subscribe ,subject is subclass of observable , it is used to pass the data  between different components i,e from child to child
 
@@ -47,7 +49,7 @@ export class CartService {
     let TotalQuantityValue:number=0;
 
     for (let i = 0; i < cartProducts.length; i++) {
-      TotalPriceValue = TotalPriceValue + cartProducts[i].price
+      TotalPriceValue = TotalPriceValue + cartProducts[i].price*cartProducts[i].quantity
       TotalQuantityValue = TotalQuantityValue + cartProducts[i].quantity
     }
     
@@ -56,6 +58,25 @@ export class CartService {
 
     this.TotalPrice.next(TotalPriceValue)
     this.TotalQuantity.next(TotalQuantityValue)
+  }
+
+
+
+
+  incrementQuantity(productid: any, userId: any) {
+    return this.httpClient.get<CartProduct[]>('http://localhost:8080/carts/'+productid +'/'+userId)
+  }
+
+
+
+
+
+
+
+
+
+  decrementQuantity(productid: any, userId: any) {
+    return this.httpClient.delete<CartProduct[]>('http://localhost:8080/carts/'+productid +'/'+userId)
   }
 
   

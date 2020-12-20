@@ -12,7 +12,7 @@ import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   {path: 'search/:keyword' , component:ProductListbyCategoryComponent},
  {path: 'category/:id' , component:ProductListComponent,canActivate:[AuthGuard]},
- {path: 'category' , component:ProductListComponent},
+ {path: 'category' , component:ProductListComponent,canActivate:[AuthGuard]},
  {path: 'product/:id' , component:ProductDetailsComponent},
  {path: 'product' , component:ProductListbyCategoryComponent,canActivate:[AuthGuard]},
  {path:'login',component:LoginComponent},
