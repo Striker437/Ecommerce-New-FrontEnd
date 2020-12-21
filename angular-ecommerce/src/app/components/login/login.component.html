@@ -18,7 +18,7 @@
 
 <form (ngSubmit)="onSubmit()">
 
-    <mat-form-field class="full-width">
+    <mat-form-field class="full-width" style="width: 600px;">
         <mat-label>UserName</mat-label>
         <input
         [(ngModel)]="credentials.username"
@@ -26,7 +26,7 @@
          required type="text" matInput/>
       </mat-form-field>
       <br>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" style="width: 600px;">
         <mat-label>Password</mat-label>
         <input
         [(ngModel)]="credentials.password"
