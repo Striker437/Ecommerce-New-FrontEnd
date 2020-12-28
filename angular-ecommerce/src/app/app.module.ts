@@ -25,6 +25,12 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CheckOutComponent } from './components/check-out/check-out.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { NgbdModalFocus } from './components/modal/modal.component';
+import { CenterModalComponent } from './components/center-modal/center-modal.component';
+
 
 
 @NgModule({
@@ -40,6 +46,11 @@ import { DialogComponent } from './dialog/dialog.component';
     CartStatusComponent,
     CartDetailsComponent,
     DialogComponent,
+    CheckOutComponent,
+    ModalComponent,
+    NgbdModalFocus,
+    CenterModalComponent
+   
 
 
 
@@ -54,7 +65,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatFormFieldModule,
     FormsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
 
 
   ],

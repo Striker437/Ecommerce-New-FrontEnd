@@ -8,9 +8,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./cart-status.component.css']
 })
 export class CartStatusComponent implements OnInit {
+
+  
   userdetails: any;
   userId: any;
-
+  
   constructor(private loginService:LoginService,
               private cartService:CartService,) { }
 

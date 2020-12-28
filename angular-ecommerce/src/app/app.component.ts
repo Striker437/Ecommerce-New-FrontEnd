@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   public loggedIn=false;
   userdetails: any;
+  userId: any;
   constructor(private loginService:LoginService)
   {
 
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
       console.log(this.loginService.getUserdetail());
       this.userdetails = JSON.parse(this.loginService.getUserdetail());      
     this.name=this.userdetails.name;
+    this.userId=this.userdetails.id;
     console.log("getting user name in frontend",this.name)
 
     }
@@ -48,6 +50,10 @@ export class AppComponent implements OnInit {
     this.loginService.logout();
     location.reload();
   }
+
+   
+  
+  
 
   
 

@@ -34,15 +34,13 @@ export class CartDetailsComponent implements OnInit {
 
    
 
-     this.userdetails = JSON.parse(this.loginService.getUserdetail());      
+     this.userdetails = JSON.parse(this.loginService.getUserdetail());     //get the usserid from local storage   
      this.userId=this.userdetails.id;
 
 
+
      this.productId=this.route.snapshot.paramMap.get('product_id')
-    //  this.route.params.forEach((urlParams) => {
-    //    this.productId = urlParams['product_id'];
-    //  this.userId = urlParams['user_id'];
-    //  })
+    
 
      this.cartDetails=this.route.snapshot.paramMap.has('userId')
 
@@ -59,19 +57,14 @@ export class CartDetailsComponent implements OnInit {
 
       this.updateCartStatus();
 
+      console.log("Total price",this.TotalPrice)
+
     
 
 
   }
   
  
-
-   openPopUp() {
-    let dialogRef = this.dialog.open(DialogComponent, {
-      height: '400px',
-      width: '600px',
-     });
-   }
 
 
   addToCart(productId: any, userId: any) {
@@ -84,19 +77,6 @@ export class CartDetailsComponent implements OnInit {
       }
     )
   }
-
-
-  // CalculateTotal(cartProducts: CartProduct[]) {
-
-  //   for (let i = 0; i < cartProducts.length; i++) {
-  //     this.TotalPrice = this.TotalPrice + cartProducts[i].price
-  //     this.TotalQuantity = this.TotalQuantity + cartProducts[i].quantity
-  //   }
-  //   //this.cartService.setTotalQuantity(this.TotalQuantity)
-  //   //this.cartService.setTotalPrice(this.TotalPrice)
-  //   console.log("total price", this.TotalPrice)
-  //   console.log("total quantity",this.TotalQuantity )
-  // }
 
 
 
@@ -182,5 +162,7 @@ decrementQuantity(tempcartProduct)
 
 
 }
+
+
 
 }
