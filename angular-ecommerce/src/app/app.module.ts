@@ -30,6 +30,7 @@ import { CheckOutComponent } from './components/check-out/check-out.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NgbdModalFocus } from './components/modal/modal.component';
 import { CenterModalComponent } from './components/center-modal/center-modal.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 
@@ -49,7 +50,8 @@ import { CenterModalComponent } from './components/center-modal/center-modal.com
     CheckOutComponent,
     ModalComponent,
     NgbdModalFocus,
-    CenterModalComponent
+    CenterModalComponent,
+    OrderDetailsComponent
    
 
 

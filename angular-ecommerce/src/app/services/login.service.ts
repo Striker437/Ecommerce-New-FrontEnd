@@ -19,7 +19,7 @@ export class LoginService {
   generateToken(credentials)
   {
     //token generate
-    return this.httpClient.post<Jwtresponse>('http://localhost:8080/token',credentials);
+    return this.httpClient.post<Jwtresponse>('http://localhost:8080/api/token',credentials);
   }
 
 

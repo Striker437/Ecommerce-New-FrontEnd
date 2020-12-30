@@ -5,7 +5,7 @@ export class OrderProduct{
     name:String
     price:number
     quantity:number
-    OrderTrackingNumber:String
+    OrderTrackingNumber:string
     imageURL:String
 
     constructor(cartProduct:CartProduct)

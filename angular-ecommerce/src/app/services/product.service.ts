@@ -17,7 +17,7 @@ export class ProductService {
   getProductList()                               //get all products
   {
     console.log('Getting all Products');
-    return this.httpClient.get<Product[]>('http://localhost:8080/product/getall');
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/products/getall');
   }
 
 
@@ -26,25 +26,25 @@ export class ProductService {
   {
     //need to build URL based on category id
     console.log('Getting all Products by Category');
-    return this.httpClient.get<Product[]>('http://localhost:8080/product/getproductsbycategory/' + theCategoryId );
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/products/getproductsbycategory/' + theCategoryId );
   }
 
 
 
   getCategories() {
     console.log('Getting all categories');                                          //get all categories
-    return this.httpClient.get<ProductCategory[]>('http://localhost:8080/category/');
+    return this.httpClient.get<ProductCategory[]>('http://localhost:8080/api/categories/');
   }
 
 
   searchProducts(theKeyword: String) {
-    return this.httpClient.get<Product[]>('http://localhost:8080/product/search/'  + theKeyword);    //method for searching the products by keyword
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/products//search/'  + theKeyword);    //method for searching the products by keyword
   }
 
 
 
   getProductDetail(productid: number) {
-    return this.httpClient.get<Product>('http://localhost:8080/product/' + productid );
+    return this.httpClient.get<Product>('http://localhost:8080/api/products/' + productid );
   }
 
 

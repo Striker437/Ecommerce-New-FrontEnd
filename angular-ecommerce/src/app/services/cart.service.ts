@@ -21,14 +21,14 @@ export class CartService {
 
 
   addToCart(productId, userId) {
-    return this.httpClient.get<CartProduct[]>('http://localhost:8080/carts/addtocart/' + productId + '/' + userId)
+    return this.httpClient.get<CartProduct[]>('http://localhost:8080/api/carts/addtocart/' + productId + '/' + userId)
   }
 
 
 
 
   CartDetails(userId: any) {
-    return this.httpClient.get<CartProduct[]>('http://localhost:8080/carts/cart-details/' + userId)
+    return this.httpClient.get<CartProduct[]>('http://localhost:8080/api/carts/cart-details/' + userId)
   }
 
 
@@ -37,14 +37,14 @@ export class CartService {
 
 
   removeProduct(productId: string) {
-    return this.httpClient.delete<CartProduct[]>('http://localhost:8080/carts/' + productId);
+    return this.httpClient.delete<CartProduct[]>('http://localhost:8080/api/carts/' + productId);
   }
 
 
 
 
   incrementQuantity(productid: any, userId: any) {
-    return this.httpClient.get<CartProduct[]>('http://localhost:8080/carts/' + productid + '/' + userId)
+    return this.httpClient.get<CartProduct[]>('http://localhost:8080/api/carts/' + productid + '/' + userId)
   }
 
 
@@ -56,7 +56,7 @@ export class CartService {
 
 
   decrementQuantity(productid: any, userId: any) {
-    return this.httpClient.delete<CartProduct[]>('http://localhost:8080/carts/' + productid + '/' + userId)
+    return this.httpClient.delete<CartProduct[]>('http://localhost:8080/api/carts/' + productid + '/' + userId)
   }
 
 

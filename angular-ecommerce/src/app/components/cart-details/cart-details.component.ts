@@ -18,11 +18,9 @@ export class CartDetailsComponent implements OnInit {
   TotalPrice: number = 0;
   TotalQuantity: number = 0;
   userId: any;
-  productId: any;
-  cartProducts: CartProduct[] = [];
-  cartDetails:boolean;
-  deleteProduct: boolean;
+  cartProducts: CartProduct[] = []
   userdetails: any;
+  hasproductId: boolean;
   //loginId: any;
 
 
@@ -34,25 +32,28 @@ export class CartDetailsComponent implements OnInit {
 
    
 
-     this.userdetails = JSON.parse(this.loginService.getUserdetail());     //get the usserid from local storage   
+     this.userdetails = JSON.parse(this.loginService.getUserdetail());     //get the userId from local storage   
      this.userId=this.userdetails.id;
 
 
 
-     this.productId=this.route.snapshot.paramMap.get('product_id')
+     this.hasproductId=this.route.snapshot.paramMap.has('product_id')
     
 
-     this.cartDetails=this.route.snapshot.paramMap.has('userId')
+   
 
 
-     if(this.cartDetails)
+     if(this.hasproductId)
      {
-     const user_Id=this.route.snapshot.paramMap.get('userId')
-     this.CartDetails(user_Id)
+       const productId=this.route.snapshot.paramMap.get('product_id')
+      this.addToCart(productId, this.userId);
+      
+     
      }
 
       else
-      this.addToCart(this.productId, this.userId);
+      this.CartDetails(this.userId)
+      
 
 
       this.updateCartStatus();
@@ -69,7 +70,7 @@ export class CartDetailsComponent implements OnInit {
 
   addToCart(productId: any, userId: any) {
 
-    this.cartService.addToCart(this.productId, this.userId).subscribe(
+    this.cartService.addToCart(productId, this.userId).subscribe(
       data => {
         this.cartProducts = data;
         console.log("getting the cart products", this.cartProducts)
